@@ -1,0 +1,29 @@
+{
+  "artifactType": "manual-local-api-verification",
+  "createdAt": "2026-10-19",
+  "baseUrl": "http://127.0.0.1:3000",
+  "method": "PowerShell Invoke-WebRequest/Invoke-RestMethod; response bodies and cookies were not recorded here",
+  "checks": [
+    { "request": "GET /", "status": 200, "result": "text/html page served" },
+    { "request": "GET /api/config", "status": 200, "result": "safe mode and public app metadata" },
+    { "request": "GET /api/products", "status": 200, "result": "7 synthetic products" },
+    { "request": "GET /api/products/1", "status": 200, "result": "product detail route responds" },
+    { "request": "GET /api/products?q=journal", "status": 200, "result": "1 match: Field Notes Journal" },
+    { "request": "GET /api/products?q=<81 x characters>", "status": 400, "result": "safe-mode search length rejected" },
+    { "request": "GET /api/account without session", "status": 401, "result": "authentication required" },
+    { "request": "POST /api/login with malformed email and short synthetic password", "status": 400, "result": "safe-mode validation rejected input" },
+    { "request": "POST /api/login with documented synthetic demo credentials", "status": 200, "result": "demo session established" },
+    { "request": "GET /api/account with demo session", "status": 200, "result": "synthetic demo account response" },
+    { "request": "POST /api/logout with demo session", "status": 200, "result": "session cleared" },
+    { "request": "GET /api/account after logout", "status": 401, "result": "session no longer accepted" },
+    { "request": "POST /api/mode with training", "status": 200, "result": "mode switched locally" },
+    { "request": "POST /api/login with empty JSON in training mode", "status": 200, "result": "simulated=true; sessionIssued=false" },
+    { "request": "GET /api/account after training login simulation", "status": 401, "result": "training mode did not grant access" },
+    { "request": "POST /api/mode with safe", "status": 200, "result": "restored safe mode" }
+  ],
+  "limitations": [
+    "These are point-in-time local responses, not a general security assessment.",
+    "The synthetic demo account is documented in README.md and must not be reused outside this lab.",
+    "No real user credentials or external services were used."
+  ]
+}

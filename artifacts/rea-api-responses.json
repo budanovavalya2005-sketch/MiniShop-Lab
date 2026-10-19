@@ -1,0 +1,56 @@
+{
+  "artifactType": "rea-captured-public-api-responses",
+  "createdAt": "2026-10-19",
+  "tool": "mcp_rea_capture_browser_scenario",
+  "evidenceId": "ev_97e46eaf2fb45fb177b69fd29c8a5e2e1af0e1518f9a7544b1f9c2fbd1b73317",
+  "origin": "http://localhost:3000",
+  "requestPolicy": {
+    "requestBodies": false,
+    "responseBodies": true,
+    "headerValues": false,
+    "maxNetworkBodyBytes": 8192,
+    "browserStorage": "empty"
+  },
+  "responses": [
+    {
+      "method": "GET",
+      "path": "/api/config",
+      "status": 200,
+      "bodyState": "captured",
+      "selectedBodyFields": {
+        "appName": "MiniShop Lab",
+        "mode": "safe",
+        "availableModes": ["safe", "training"],
+        "apiVersion": 1,
+        "localOnly": true,
+        "demoCredentialsExposed": false
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/products",
+      "queryKeys": [],
+      "status": 200,
+      "bodyState": "captured",
+      "selectedBodyFields": {
+        "count": 7,
+        "names": [
+          "Field Notes Journal",
+          "Cedar Travel Mug",
+          "Linen Market Tote",
+          "Desk Garden Kit",
+          "Cloud Cotton Socks",
+          "Citrus Tea Tin",
+          "Pocket Tool Roll"
+        ]
+      }
+    }
+  ],
+  "limitations": [
+    "Only the public config/catalog response bodies were decoded and summarized here; the raw bodies are not copied into this artifact.",
+    "The same capture retained bounded HTML and JavaScript response bodies for /, /js/api.js, /js/cart.js, /js/catalog.js, /js/main.js, and /js/state.js; those bodies were not decoded or statically analyzed in this response-capture step.",
+    "Request bodies and header values were not captured.",
+    "The stylesheet response body was unavailable because its 11482 observed bytes exceeded the 8192-byte per-body limit.",
+    "No login request was made by the browser scenario."
+  ]
+}

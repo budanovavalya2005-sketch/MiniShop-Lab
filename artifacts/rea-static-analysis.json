@@ -1,0 +1,57 @@
+{
+  "artifactType": "rea-static-analysis-summary",
+  "createdAt": "2026-10-19",
+  "tool": "mcp_rea_analyze_javascript_application",
+  "inputPath": "C:/Users/Валентин/Desktop/DatingSite/MiniShop-Lab",
+  "format": "directory",
+  "integrityPolicy": "fail",
+  "selectedSources": [
+    "server.js",
+    "public/index.html",
+    "public/js/main.js",
+    "public/js/api.js",
+    "public/js/catalog.js",
+    "public/js/cart.js",
+    "public/js/state.js",
+    "data/products.json",
+    "package.json"
+  ],
+  "evidenceId": "ev_24ea00c66f781aa6ff1ffc0e0c6330569efb98aa960e9aece8397214896d48f8",
+  "summaryEvidenceId": "ev_a4f394087206e615dcf1fe955a3999026bfa026fea1ec50a4e0396a4077b1f58",
+  "directorySha256AtAnalysis": "a198f22f9b6f870e521d1987ae7cb3bc7c164af2905434cc0e3ae4dbc8acb9cd",
+  "digestScope": "Directory snapshot when REA ran; final report/artifacts were written afterward. Selected source files were unchanged.",
+  "statistics": {
+    "relevantFiles": 363,
+    "selectedJavaScriptParsed": 6,
+    "selectedJavaScriptSkipped": 0,
+    "selectedSourceParseFailures": 0,
+    "visitedAstNodes": 2673,
+    "reportedFindings": 33,
+    "unselectedFiles": 354,
+    "applicationCoverage": "partial",
+    "semanticCoverage": "partial",
+    "semanticUnknownCount": 3789
+  },
+  "staticEndpointObservations": [
+    { "path": "server.js", "method": "GET", "route": "/api/config", "evidence": "inferred candidate", "confidence": "low", "sourceRange": "40:0-49:2" },
+    { "path": "server.js", "method": "GET", "route": "/api/products", "evidence": "inferred candidate", "confidence": "low", "sourceRange": "62:0-72:2" },
+    { "path": "server.js", "method": "GET", "route": "/api/products/:id", "evidence": "inferred candidate", "confidence": "low", "sourceRange": "74:0-79:2" },
+    { "path": "server.js", "method": "POST", "route": "/api/mode", "evidence": "observed literal", "sourceRange": "51:0-60:2" },
+    { "path": "server.js", "method": "POST", "route": "/api/login", "evidence": "observed literal", "sourceRange": "81:0-108:2" },
+    { "path": "server.js", "method": "POST", "route": "/api/logout", "evidence": "observed literal", "sourceRange": "110:0-115:2" },
+    { "path": "server.js", "method": "GET", "route": "/api/account", "evidence": "inferred candidate", "confidence": "low", "sourceRange": "117:0-119:2" }
+  ],
+  "clientNetworkObservation": {
+    "path": "public/js/api.js",
+    "mechanism": "fetch",
+    "sourceRange": "4:25-8:4",
+    "resolution": "partial",
+    "note": "Fetch target is passed as variable `url`; static analyzer retains it as an unresolved expression. Runtime capture separately observed concrete localhost paths."
+  },
+  "limitations": [
+    "REA parsed selected JavaScript as inert syntax; it did not execute application source during static analysis.",
+    "354 inventoried files were outside selected source analysis, chiefly installed dependencies.",
+    "Graph and semantic coverage are partial; unknowns are not evidence of absence.",
+    "Static endpoint classification alone does not establish runtime behavior; runtime REA capture and manual HTTP checks are recorded separately."
+  ]
+}

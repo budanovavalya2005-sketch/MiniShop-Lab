@@ -1,0 +1,122 @@
+{
+  "artifactType": "rea-browser-evidence-summary",
+  "createdAt": "2026-10-19",
+  "application": "MiniShop Lab",
+  "origin": "http://localhost:3000",
+  "evidence": [
+    {
+      "evidenceId": "ev_cd320b2d9dfa7431dfc3eb0ee8827ad827f27f1a9b012dfca1c0ccd04a193aaa",
+      "tool": "mcp_rea_capture_browser_scenario",
+      "purpose": "Initial login/search capture; this run exposed the catalog rendering error later fixed.",
+      "retention": "complete-record"
+    },
+    {
+      "evidenceId": "ev_71c4da0845ab1ad75eb40d9bb6e1f969af0c1bd71526450bb8da581d302b5960",
+      "tool": "mcp_rea_capture_browser_scenario",
+      "purpose": "Post-fix login, catalog and journal-search capture.",
+      "retention": "complete-record"
+    },
+    {
+      "evidenceId": "ev_bb54d29868006cec9c28ef20e3d8032750cc3d14db69011426e5bd21c6ba2cd3",
+      "tool": "mcp_rea_capture_browser_scenario",
+      "purpose": "Post-accessibility-fix cart interaction capture.",
+      "retention": "complete-record"
+    },
+    {
+      "evidenceId": "ev_a649b819cfff1c08644122c8847840bd754416935c759b054c48451ad17131c0",
+      "tool": "mcp_rea_capture_browser_scenario",
+      "purpose": "Final combined login snapshot, catalog search and cart capture.",
+      "retention": "complete-record"
+    },
+    {
+      "evidenceId": "ev_91f32943a1a170a2007ecdb0db18745c84e9c3a35fb6bcf17948accce343edd4",
+      "tool": "mcp_rea_capture_browser_scenario",
+      "purpose": "Cart locator diagnostic; strict mode stopped because identical accessible names matched seven product buttons.",
+      "retention": "complete-record"
+    },
+    {
+      "evidenceId": "ev_97e46eaf2fb45fb177b69fd29c8a5e2e1af0e1518f9a7544b1f9c2fbd1b73317",
+      "tool": "mcp_rea_capture_browser_scenario",
+      "purpose": "Bounded response-body capture for public config/products only.",
+      "retention": "complete-record"
+    }
+  ],
+  "finalScenarioRequest": {
+    "browser": {
+      "mode": "launch",
+      "executablePath": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+      "headless": true
+    },
+    "startUrl": "http://localhost:3000/",
+    "actions": [
+      { "stepId": "login-snapshot", "action": "wait_for_timeout", "durationMs": 400 },
+      { "stepId": "catalog-view", "action": "click", "role": "button", "name": "Catalog" },
+      { "stepId": "search-journal", "action": "fill", "selector": "[data-search-input]", "value": "journal" },
+      { "stepId": "search-settle", "action": "wait_for_timeout", "durationMs": 350 },
+      { "stepId": "add-journal", "action": "click", "role": "button", "name": "Add Field Notes Journal to cart" },
+      { "stepId": "open-cart", "action": "click", "role": "button", "name": "Open cart" }
+    ],
+    "capture": {
+      "afterEachStep": ["url", "accessibility"],
+      "atEnd": ["url", "dom", "accessibility"],
+      "events": ["network", "console", "page-errors"],
+      "requestBodies": false,
+      "responseBodies": false,
+      "headerValues": false,
+      "initialStorage": "empty",
+      "serviceWorkers": "blocked"
+    }
+  },
+  "observations": {
+    "login": {
+      "documentTitle": "MiniShop Lab",
+      "formId": "login-form",
+      "fields": ["email (required)", "password (required)", "mode selector"],
+      "noCredentialsEntered": true
+    },
+    "search": {
+      "query": "journal",
+      "visibleResultCount": 1,
+      "visibleResult": "Field Notes Journal",
+      "displayMethod": "REA accessibility snapshot"
+    },
+    "cart": {
+      "visibleCount": 1,
+      "item": "Field Notes Journal",
+      "quantity": 1,
+      "subtotal": "$8.50"
+    },
+    "network": {
+      "retainedEvents": 30,
+      "droppedEvents": 0,
+      "pageErrors": 0,
+      "consoleEvents": 0,
+      "responses": [
+        { "method": "GET", "path": "/", "status": 200 },
+        { "method": "GET", "path": "/api/config", "status": 200 },
+        { "method": "GET", "path": "/api/products", "queryKeys": [], "status": 200 },
+        { "method": "GET", "path": "/api/products", "queryKeys": ["q"], "status": 200 }
+      ],
+      "scripts": ["/js/main.js", "/js/api.js", "/js/catalog.js", "/js/cart.js", "/js/state.js"]
+    }
+  },
+  "responseBodyCapture": {
+    "evidenceId": "ev_97e46eaf2fb45fb177b69fd29c8a5e2e1af0e1518f9a7544b1f9c2fbd1b73317",
+    "responseBodies": true,
+    "requestBodies": false,
+    "headerValues": false,
+    "maxBodyBytes": 8192,
+    "capturedEndpoints": ["/api/config", "/api/products"],
+    "otherCapturedResponseBodiesNotAnalyzed": ["/", "/js/api.js", "/js/cart.js", "/js/catalog.js", "/js/main.js", "/js/state.js"],
+    "perBodyLimitExceeded": [
+      { "path": "/styles.css", "observedBytes": 11482, "limitBytes": 8192 }
+    ]
+  },
+  "limitations": [
+    "Browser scenario captures controlled local replay, not passive history.",
+    "No login submission or credential entry was performed in the browser.",
+    "The final interaction capture omitted bodies; a separate bounded capture retained only the public /api/config and /api/products response bodies. Header values and browser storage were not captured.",
+    "Only the listed browser action window and local origin are represented.",
+    "Capture evidence is retained in REA; this JSON is a focused summary, not the complete raw Evidence."
+  ]
+}

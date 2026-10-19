@@ -1,0 +1,9 @@
+[
+  { "id": 1, "name": "Field Notes Journal", "category": "Stationery", "price": 8.5, "description": "A pocket-sized recycled-paper notebook." },
+  { "id": 2, "name": "Cedar Travel Mug", "category": "Kitchen", "price": 18, "description": "A double-wall mug for a slow morning." },
+  { "id": 3, "name": "Linen Market Tote", "category": "Accessories", "price": 14.25, "description": "A sturdy natural-fiber bag for everyday errands." },
+  { "id": 4, "name": "Desk Garden Kit", "category": "Home", "price": 22, "description": "Three easy-care herb seeds with a small planter." },
+  { "id": 5, "name": "Cloud Cotton Socks", "category": "Apparel", "price": 11, "description": "Soft cotton socks in a quiet blue stripe." },
+  { "id": 6, "name": "Citrus Tea Tin", "category": "Pantry", "price": 9.75, "description": "A bright caffeine-free blend for the afternoon." },
+  { "id": 7, "name": "Pocket Tool Roll", "category": "Accessories", "price": 19.5, "description": "A compact canvas wrap for small craft tools." }
+]

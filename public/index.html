@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <title>MiniShop Lab</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script type="module" src="/js/main.js"></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="wordmark" href="#login" aria-label="MiniShop Lab home">
+          <span class="wordmark-mark" aria-hidden="true">M</span>
+          <span>MiniShop <span class="wordmark-light">Lab</span></span>
+        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+          <button class="nav-link is-active" type="button" data-view="login" aria-current="page">Sign in</button>
+          <button class="nav-link" type="button" data-view="catalog">Catalog</button>
+          <button class="cart-button" type="button" data-cart-toggle aria-label="Open cart">
+            <span>Cart</span><span class="cart-count" data-cart-count>0</span>
+          </button>
+        </nav>
+      </header>
+
+      <main>
+        <section class="intro-band" aria-labelledby="page-heading">
+          <div class="intro-copy">
+            <p class="eyebrow">A small, local storefront</p>
+            <h1 id="page-heading">Good things,<br><em>kept simple.</em></h1>
+            <p class="intro-note">Seven useful finds for everyday rituals. Browse, search, and build a little basket.</p>
+          </div>
+          <div class="intro-art" aria-hidden="true">
+            <div class="art-sun"></div>
+            <div class="art-bag"><span></span></div>
+            <div class="art-leaf art-leaf-one"></div>
+            <div class="art-leaf art-leaf-two"></div>
+            <div class="art-ground"></div>
+            <span class="art-label">LOCAL GOODS · No. 07</span>
+          </div>
+        </section>
+
+        <section class="mode-panel" aria-label="Practice mode">
+          <div class="mode-copy">
+            <p class="eyebrow">Practice mode</p>
+            <p class="mode-description" data-mode-description>Safe mode checks input and creates a short-lived, HttpOnly demo session.</p>
+          </div>
+          <div class="segmented-control" role="group" aria-label="Choose practice mode">
+            <button type="button" class="mode-option is-selected" data-mode="safe" aria-pressed="true">Safe mode</button>
+            <button type="button" class="mode-option" data-mode="training" aria-pressed="false">Training mode</button>
+          </div>
+          <p class="mode-guard">Training mode is local-only and never grants a session.</p>
+        </section>
+
+        <section class="content-grid">
+          <section class="login-view" data-page-view="login" aria-labelledby="login-heading">
+            <div class="section-heading">
+              <p class="eyebrow">Your account</p>
+              <h2 id="login-heading">Welcome back.</h2>
+            </div>
+            <form class="login-form" data-login-form novalidate>
+              <label for="email">Email address</label>
+              <input id="email" name="email" type="email" autocomplete="username" required maxlength="254" placeholder="student@example.test">
+              <label for="password">Password</label>
+              <input id="password" name="password" type="password" autocomplete="current-password" required minlength="8" maxlength="128" placeholder="8–128 characters">
+              <button class="primary-button" type="submit">Sign in <span aria-hidden="true">→</span></button>
+              <p class="form-message" data-login-message role="status" aria-live="polite"></p>
+            </form>
+            <aside class="demo-note">
+              <strong>Local practice account</strong>
+              <span data-demo-hint>Use the synthetic credentials listed in the project README.</span>
+            </aside>
+          </section>
+
+          <section class="catalog-view is-hidden" data-page-view="catalog" aria-labelledby="catalog-heading">
+            <div class="catalog-heading-row">
+              <div class="section-heading">
+                <p class="eyebrow">The edit · 07 pieces</p>
+                <h2 id="catalog-heading">Small comforts.</h2>
+              </div>
+              <label class="search-box">
+                <span class="visually-hidden">Search products</span>
+                <span class="search-icon" aria-hidden="true">⌕</span>
+                <input type="search" data-search-input placeholder="Search the edit" maxlength="80" autocomplete="off">
+                <button type="button" class="clear-search" data-clear-search aria-label="Clear search">×</button>
+              </label>
+            </div>
+            <p class="catalog-status" data-catalog-status role="status" aria-live="polite"></p>
+            <div class="product-grid" data-product-grid></div>
+          </section>
+
+          <aside class="cart-panel is-hidden" data-cart-panel aria-labelledby="cart-heading">
+            <div class="cart-heading-row">
+              <div>
+                <p class="eyebrow">Your basket</p>
+                <h2 id="cart-heading">Cart <span data-cart-heading-count>(0)</span></h2>
+              </div>
+              <button class="icon-button" type="button" data-cart-close aria-label="Close cart">×</button>
+            </div>
+            <div class="cart-items" data-cart-items></div>
+            <div class="cart-total-row"><span>Subtotal</span><strong data-cart-total>$0.00</strong></div>
+            <p class="cart-footnote">Demo cart only · no checkout or payment processing.</p>
+          </aside>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span>MiniShop Lab</span><span>Local demo · no external services</span>
+      </footer>
+    </div>
+    <div class="toast" data-toast role="status" aria-live="polite"></div>
+  </body>
+</html>
